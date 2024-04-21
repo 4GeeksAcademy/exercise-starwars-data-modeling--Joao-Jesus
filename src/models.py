@@ -26,6 +26,7 @@ class Character(Base):
     name = Column(String(250), nullable=False)
     gender = Column(String(250), nullable=False)
     heigth = Column(String(250), nullable=False)
+    eyecolor = Column(String(250), nullable=False)
     
 
 class Planet(Base):
@@ -36,7 +37,10 @@ class Planet(Base):
     name = Column(String(250))
     terrain = Column(String(250))
     population = Column(Integer)
-   
+    diameter = Column(Integer)
+    rotation = Column(Integer)
+    gravity = Column(Integer)
+  
 
 
 class Vehicle(Base):
@@ -45,8 +49,9 @@ class Vehicle(Base):
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
-    passengers = Column(Integer)
-    pilots = Column(String(250))
+    crew = Column(Integer)
+    speed = Column(Integer)
+    vehicle_class = Column(String(250))
 
     def to_dict(self):
         return {}
