@@ -23,38 +23,43 @@ class Character(Base):
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
-    name = Column(String(250), nullable=False)
+    name = Column(String(250), nullable=False )
     gender = Column(String(250), nullable=False)
     heigth = Column(String(250), nullable=False)
     eyecolor = Column(String(250), nullable=False)
-    
+    user_id= Column(Integer, ForeignKey('user.id'))
+    user = relationship(User)
 
 class Planet(Base):
     __tablename__ = 'planet'
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
-    name = Column(String(250))
+    name = Column(String(250), nullable=False)
     terrain = Column(String(250))
     population = Column(Integer)
     diameter = Column(Integer)
     rotation = Column(Integer)
     gravity = Column(Integer)
-  
-
+    user_id= Column(Integer, ForeignKey('user.id'))
+    user = relationship(User)
 
 class Vehicle(Base):
     __tablename__ = 'vehicle'
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
-    name = Column(String(250))
+    name = Column(String(250), nullable=False)
     crew = Column(Integer)
     speed = Column(Integer)
     vehicle_class = Column(String(250))
+    user_id= Column(Integer, ForeignKey('user.id'))
+    user = relationship(User)
 
     def to_dict(self):
-        return {}
+        return {
+            
+        }
 
 ## Draw from SQLAlchemy base
 render_er(Base, 'diagram.png')
